@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolibburhaan Brandhouse | Create • Influence • Grow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --navy-light: #112240;
+            --sky: #00e5ff;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--navy); color: var(--white); overflow-x: hidden; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(10, 25, 47, 0.9); backdrop-filter: blur(15px);
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+        }
+        .logo { font-family: 'Montserrat'; font-weight: 900; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; }
+        .logo span { color: var(--sky); }
+
+        /* Hamburger Menu */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; z-index: 1100; }
+        .hamburger span { width: 30px; height: 3px; background: var(--sky); border-radius: 5px; transition: 0.3s; }
+
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--sky); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; position: relative;
+            background: linear-gradient(rgba(10, 25, 47, 0.6), rgba(10, 25, 47, 0.8)), 
+                        url('assets/images/hero-bg.jpg'); /* Faint Background Image */
+            background-size: cover; background-position: center;
+        }
+        .hero-content h3 { color: var(--sky); font-family: 'Montserrat'; font-weight: 700; letter-spacing: 5px; margin-bottom: 15px; font-size: 0.9rem; }
+        .hero-content h1 { font-family: 'Montserrat'; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
+        .hero-tagline { color: var(--sky); font-weight: 800; letter-spacing: 4px; font-size: 1.1rem; margin-bottom: 30px; }
+        .cta-btn { 
+            background: var(--sky); color: var(--navy); padding: 18px 45px; 
+            border-radius: 50px; font-weight: 900; text-decoration: none; transition: var(--transition);
+        }
+
+        /* --- SECTIONS --- */
+        .container { max-width: 1000px; margin: 100px auto; padding: 0 20px; }
+        /* Fixes the header overlap in image_f3a215.png */
+.section-header h2 {
+    margin-bottom: 15px; /* Adds space between "AD PORTAL" and the subtext */
+    color: #ffffff;      /* Ensures title is pure white */
+}
+
+.section-header p {
+    margin-bottom: 20px; /* Adds space before the Ad Portal box starts */
+    color: #8892b0;      /* Keeps subtext slightly dim for premium look */
+}
+        /* --- AD PORTAL (Dermacol Style) --- */
+        .portal-box { background: #0d1117; border-radius: 40px; padding: 10px 30px; border: 1px solid #1e293b; }
+        .ad-row { padding: 25px 0; border-bottom: 1px solid #1e293b; transition: 0.3s; }
+        .ad-row:last-child { border-bottom: none; }
+        .ad-flex { display: flex; justify-content: space-between; align-items: center; }
+        .price { color: var(--sky); font-family: 'Montserrat'; font-weight: 900; font-size: 1.4rem; }
+        .book-btn { background: #1e293b; color: white; border: none; padding: 12px 25px; border-radius: 15px; font-weight: 700; cursor: pointer; }
+        .book-btn.active { background: var(--sky); color: var(--navy); }
+
+        .payment-dropdown { display: none; background: #05080f; border-radius: 30px; margin-top: 20px; padding: 30px; border: 1px solid #2d3748; animation: slideIn 0.4s ease; }
+        .bank-card { background: #000; padding: 20px; border-radius: 20px; border: 1px solid var(--sky); text-align: center; margin: 15px 0; }
+        .wa-confirm { background: #25D366; color: white; display: block; text-align: center; padding: 18px; border-radius: 18px; text-decoration: none; font-weight: 900; }
+
+        /* --- PORTFOLIO GRIDS --- */
+        .work-grid { display: grid; gap: 15px; margin-top: 20px; }
+        .img-box { aspect-ratio: 1; background: var(--navy-light); border-radius: 20px; overflow: hidden; cursor: pointer; border: 1px solid rgba(255,255,255,0.05); }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .img-box:hover img { transform: scale(1.1); }
+
+        /* Specific Grids */
+        .grid-5 { grid-template-columns: repeat(5, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-6 { grid-template-columns: repeat(6, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+        /* --- FOOTER --- */
+        footer { background: #05080f; padding: 80px 20px; text-align: center; border-top: 1px solid #1e293b; }
+
+        /* --- LIGHTBOX --- */
+        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000; align-items: center; justify-content: center; padding: 20px; }
+        #lightbox img { max-width: 100%; max-height: 85vh; border-radius: 15px; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 850px) {
+            .hamburger { display: flex; }
+            .nav-links { 
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
+                background: var(--navy); flex-direction: column; justify-content: center; 
+                transition: 0.5s ease-in-out; 
+            }
+            .nav-links.active { right: 0; }
+            .grid-5, .grid-4, .grid-6, .grid-3 { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .portal-box { background: #0d1117; border-radius: 40px; padding: 10px 30px; border: 1px solid #1e293b; }
+.ad-row { 
+    padding: 30px 0; 
+    border-bottom: 1px solid #1e293b; 
+}
+.ad-flex { display: flex; justify-content: space-between; align-items: center; }
+
+.ad-info p { 
+    font-size: 1.1rem; 
+    color: #ffffff !important; 
+    margin-bottom: 8px; 
+}
+
+.price { color: var(--sky); font-family: 'Montserrat'; font-weight: 900; font-size: 1.3rem; font-style: italic; }
+
+.payment-card-inner { background: #05080f; border-radius: 25px; padding: 25px; border: 1px solid #2d3748; margin-top: 15px; }
+.bank-box { 
+    background: #000; border-radius: 15px; padding: 15px 20px; margin: 20px 0; 
+    border: 1px solid #1e293b; position: relative; display: flex; align-items: center; 
+}
+.copy-icon { 
+    cursor: pointer; font-size: 1.2rem; transition: 0.2s; padding: 5px; background: #1e293b; border-radius: 8px; 
+}
+.copy-icon:hover { background: var(--sky); color: var(--navy); }
+.wa-confirm { 
+    background: #5908ef; color: white; display: block; text-align: center; 
+    padding: 15px; border-radius: 15px; text-decoration: none; font-weight: 900; 
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* Creates the big gap between Ads and Portfolio */
+.portfolio-intro {
+    margin-top: 150px !important; 
+    margin-bottom: 60px !important;
+}
+
+/* Styles the new header to match your theme */
+.portfolio-wall-header h2 {
+    color: #ffffff;
+    text-transform: uppercase;
+    border-left: 5px solid #00e5ff; /* Matches the blue bar in your ad header */
+    padding-left: 20px;
+}
+
+/* Brings 'FLYER DESIGNS' header closer to the actual images */
+#portfolio h3 {
+    margin-top: 30px;    /* Space above the section title */
+    margin-bottom: 15px; /* Pulls the grid up closer to the title */
+    font-size: 1.1rem;
+}
+
+/* Adjusts the images to be closer together */
+.work-grid {
+    display: grid;
+    gap: 10px; /* Reduced gap to 10px for a 'tighter' look */
+    margin-top: 0px; 
+}
+
+/* Ensures images are perfectly aligned without extra padding */
+.img-box {
+    border-radius: 12px; /* Slightly tighter corners look more aligned */
+}
+
+.portfolio-wall-header p {
+    padding-left: 25px; /* Aligns caption with the title text */
+}
+
+/* Pulls the 'LOGO AND FLYER WALL' closer to the ads and the designs */
+.portfolio-intro {
+    margin-top: 60px !important;    /* Reduced from 150px to make it less scanty */
+    margin-bottom: 20px !important; /* Brings the flyer design header closer */
+}
+
+/* Tightens the space under the captions */
+.portfolio-wall-header p {
+    margin-bottom: 10px !important;
+    font-size: 0.95rem; /* Slightly smaller to feel more 'put together' */
+}
+
+/* Styling for the new portfolio booking row */
+.portfolio-booking-row {
+    margin-top: 20px;
+    margin-bottom: 40px; /* Space before the next section starts */
+    padding: 0 10px;
+}
+
+.booking-trigger {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #ccd6f6;
+}
+
+.book-here-btn {
+    background: none;
+    border: none;
+    color: #00e5ff; /* Sky blue to match your theme */
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    transition: 0.3s;
+}
+
+.book-here-btn:hover {
+    color: #ff4d7d; /* Pink hover effect like your Ad Portal */
+}
+
+/* Ensures the payment card matches the Ad Portal look */
+.payment-card-inner {
+    background: #112240; /* Slightly lighter dark to stand out */
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 15px;
+    border: 1px solid #233554;
+}
+
+.main-footer {
+    background-color: #0a192f; /* Matches the Navy Blue in image_f23cfc.png */
+    padding: 60px 0 30px;
+    text-align: center;
+    color: #ffffff;
+    border-top: 2px solid #112240;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+}
+
+.footer-logo span {
+    color: #00e5ff; /* The Sky Blue accent from your logo */
+}
+
+.footer-tagline {
+    color: #8892b0;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.footer-numbers {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    color: #ccd6f6;
+}
+
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #233554;
+    width: 80%;
+    margin: 0 auto 20px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
+    font-size: 0.85rem;
+    color: #8892b0;
+}
+
+.dev-credit span {
+    color: #00e5ff;
+    font-weight: bold;
+}
+
+/* Mobile responsive alignment */
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo" onclick="window.scrollTo(0,0)">TOOLIB<span>BURHAAN</span></div>
+        <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#home" onclick="toggleMenu()">HOME</a>
+            <a href="#ads" onclick="toggleMenu()">ADS SECTION</a>
+            <a href="#portfolio" onclick="toggleMenu()">FLYER AND LOGO WALL</a>
+            <a href="#contact" onclick="toggleMenu()">CONTACT</a>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content reveal">
+            <h3>TOOLIBBURHAAN BRANDHOUSE</h3>
+            <h1>Building Brands <br> That Influence</h1>
+            <div class="hero-tagline">CREATE • INFLUENCE • GROW</div>
+            <a href="#ads" class="cta-btn">EXPLORE SERVICES</a>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <section id="ads" class="container reveal">
+    <div class="section-header">
+        <h2 style="font-style: italic;">📢 AD PORTAL</h2>
+        <p style="color: #8892b0; margin-top: -10px; font-size: 0.85rem;">"Toolibburhaan connects you with more WhatsApp audience giving more visibility to your brand."</p>
+    </div>
+
+    <div class="portal-box">
+        <div class="category-label" style="padding: 20px 0 10px; color: var(--sky); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;">ADS & INFLUENCING RATES</div>
+
+        <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p>24Hours Link Only</p>
+                    <div class="price">₦2,000</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+
+       <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p>24Hours Link and Picture</p>
+                    <div class="price">₦2,500</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+
+       <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p>24Hours Link and video</p>
+                    <div class="price">₦4,500</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p>3Days Link and Picture</p>
+                    <div class="price">₦6,000</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+
+       <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p>3Days Link and Video</p>
+                    <div class="price">₦8,500</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="category-label" style="padding: 40px 0 10px; color: var(--sky); font-weight: 800; font-size: 0.8rem; letter-spacing: 2px;">INFLUENCING DEALS</div>
+
+        <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p>1 Week Influencing</p>
+                    <div class="price">₦15,000</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p>2 Weeks Influencing</p>
+                    <div class="price">₦25,000</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p> A video of me or one of my team talking about your brand</p>
+                    <div class="price">₦10,000</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p> ⁠Promoting your Brand on my Active group for visibility</p>
+                    <div class="price">₦13,000</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+        
+
+
+       <div class="ad-row">
+            <div class="ad-flex">
+                <div class="ad-info">
+                    <p> Walking into your store for video</p>
+                    <div class="price">₦30,000</div>
+                </div>
+                <button class="book-btn" onclick="togglePay(this)">BOOK NOW ▾</button>
+            </div>
+            <div class="payment-dropdown">
+                <div class="payment-card-inner">
+                    <h5 style="color: var(--sky); margin-bottom: 5px;">PAYMENT DETAILS</h5>
+                    <p style="font-size: 0.75rem; color: #8892b0; font-style: italic;">Copy the account number, make payment, then send confirmation to WhatsApp.</p>
+                    <div class="bank-box">
+                        <div style="text-align: left;">
+                            <small style="color: #8892b0;">OPAY</small>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <strong style="font-size: 1.4rem; letter-spacing: 1px;">8165697538</strong>
+                                <span class="copy-icon" onclick="copyNum('8165697538')" title="Copy Number">📋</span>
+                            </div>
+                            <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                </div>
+            </div>
+        </div>
+        
+
+    <div style="margin-top: 30px; background: rgba(255, 77, 77, 0.1); padding: 20px; border-radius: 20px; border: 1px dashed #ff4d4d; text-align: center;">
+        <p style="color: #ff4d4d; font-weight: 800; font-size: 0.8rem;">NOTE: NO URGENT POSTING, YOU MUST BOOK AHEAD AND NO REFUND!</p>
+    </div>
+</section>
+
+       
+
+        <div id="portfolio">
+        <div class="portfolio-intro container reveal">
+    <div class="section-header portfolio-wall-header">
+        <h2 style="font-family: 'Montserrat'; font-weight: 900; letter-spacing: 2px;">
+            🎨 LOGO AND FLYER WALL
+        </h2>
+        <p style="color: #8892b0; margin-top: -10px; font-size: 0.85rem;">"Designed for over 50 vendors with beautiful testimonies."</p>
+    </div>
+</div>
+            <section class="reveal" style="margin-bottom: 60px;">
+                <div class="section-header"><h2>FLYER DESIGNS (₦7,000)</h2></div>
+                <div class="work-grid grid-5">
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/flyers/flyer-1.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/flyers/flyer-2.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/flyers/flyer-3.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/flyers/flyer-4.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/flyers/flyer-5.jpg"></div>
+                </div>
+                <div class="portfolio-booking-row">
+    <div class="booking-trigger">
+        <span>Want something like this for your brand?</span>
+        <button class="book-here-btn" onclick="togglePay(this)">..book here ▾</button>
+    </div>
+
+    <div class="payment-dropdown" style="display: none;">
+        <div class="payment-card-inner">
+            <h5 style="color: #00e5ff; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px;">PAYMENT DETAILS</h5>
+            <p style="font-size: 0.75rem; color: #8892b0; margin-bottom: 15px;">
+                Copy the account number, make payment, then send confirmation to WhatsApp.
+            </p>
+            
+            <div class="bank-box" style="background: #0a192f; padding: 15px; border-radius: 12px; border: 1px solid #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <small style="color:#8892b0; font-weight: bold;">OPAY</small><br>
+                    <strong style="font-size: 1.4rem; color: white; letter-spacing: 1px;">8165697538</strong>
+                    <br><small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                </div>
+                <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
+            </div>
+
+            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+        </div>
+    </div>
+</div>
+            </section>
+
+            <section class="reveal" style="margin-bottom: 60px;">
+                <div class="section-header"><h2>PROFESSIONAL LOGO (₦8,000)</h2></div>
+                <div class="work-grid grid-6">
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/pro-logos/pro-1.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/pro-logos/pro-2.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/pro-logos/pro-3.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/pro-logos/pro-4.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/pro-logos/pro-5.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/pro-logos/pro-6.jpg"></div>
+                </div>
+                <div class="portfolio-booking-row">
+    <div class="booking-trigger">
+        <span>Want something like this for your brand?</span>
+        <button class="book-here-btn" onclick="togglePay(this)">..book here ▾</button>
+    </div>
+
+    <div class="payment-dropdown" style="display: none;">
+        <div class="payment-card-inner">
+            <h5 style="color: #00e5ff; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px;">PAYMENT DETAILS</h5>
+            <p style="font-size: 0.75rem; color: #8892b0; margin-bottom: 15px;">
+                Copy the account number, make payment, then send confirmation to WhatsApp.
+            </p>
+            
+            <div class="bank-box" style="background: #0a192f; padding: 15px; border-radius: 12px; border: 1px solid #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <small style="color:#8892b0; font-weight: bold;">OPAY</small><br>
+                    <strong style="font-size: 1.4rem; color: white; letter-spacing: 1px;">8165697538</strong>
+                    <br><small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                </div>
+                <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
+            </div>
+
+            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+        </div>
+    </div>
+</div>
+            </section>
+
+             <section class="reveal" style="margin-bottom: 60px;">
+                <div class="section-header"><h2>SIMPLE LOGO (₦3,500)</h2></div>
+                <div class="work-grid grid-4">
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/simple-logos/logo-1.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/simple-logos/logo-2.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/simple-logos/logo-3.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/simple-logos/logo-4.jpg"></div>
+                </div>
+                <div class="portfolio-booking-row">
+    <div class="booking-trigger">
+        <span>Want something like this for your brand?</span>
+        <button class="book-here-btn" onclick="togglePay(this)">..book here ▾</button>
+    </div>
+
+    <div class="payment-dropdown" style="display: none;">
+        <div class="payment-card-inner">
+            <h5 style="color: #00e5ff; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px;">PAYMENT DETAILS</h5>
+            <p style="font-size: 0.75rem; color: #8892b0; margin-bottom: 15px;">
+                Copy the account number, make payment, then send confirmation to WhatsApp.
+            </p>
+            
+            <div class="bank-box" style="background: #0a192f; padding: 15px; border-radius: 12px; border: 1px solid #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <small style="color:#8892b0; font-weight: bold;">OPAY</small><br>
+                    <strong style="font-size: 1.4rem; color: white; letter-spacing: 1px;">8165697538</strong>
+                    <br><small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                </div>
+                <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
+            </div>
+
+            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+        </div>
+    </div>
+</div>
+            </section>
+
+            <section class="reveal" style="margin-bottom: 60px;">
+                <div class="section-header"><h2>NIKKAH INVITES (₦5,000)</h2></div>
+                <div class="work-grid grid-4">
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/nikkah/invite-1.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/nikkah/invite-2.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/nikkah/invite-3.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/nikkah/invite-4.jpg"></div>
+                </div>
+                <div class="portfolio-booking-row">
+    <div class="booking-trigger">
+        <span>Want something like this for your brand?</span>
+        <button class="book-here-btn" onclick="togglePay(this)">..book here ▾</button>
+    </div>
+
+    <div class="payment-dropdown" style="display: none;">
+        <div class="payment-card-inner">
+            <h5 style="color: #00e5ff; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px;">PAYMENT DETAILS</h5>
+            <p style="font-size: 0.75rem; color: #8892b0; margin-bottom: 15px;">
+                Copy the account number, make payment, then send confirmation to WhatsApp.
+            </p>
+            
+            <div class="bank-box" style="background: #0a192f; padding: 15px; border-radius: 12px; border: 1px solid #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <small style="color:#8892b0; font-weight: bold;">OPAY</small><br>
+                    <strong style="font-size: 1.4rem; color: white; letter-spacing: 1px;">8165697538</strong>
+                    <br><small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                </div>
+                <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
+            </div>
+
+            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+        </div>
+    </div>
+</div>
+            </section>
+
+            
+            <section class="reveal" style="margin-bottom: 60px;">
+                <div class="section-header"><h2> CERTIFICATE DESIGN (₦4,000)</h2></div>
+                <div class="work-grid grid-4">
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/certificates/cert-1.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/certificates/cert-2.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/certificates/cert-3.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/certificates/cert-4.jpg"></div>
+                </div>
+                <div class="portfolio-booking-row">
+    <div class="booking-trigger">
+        <span>Want something like this for your brand?</span>
+        <button class="book-here-btn" onclick="togglePay(this)">..book here ▾</button>
+    </div>
+
+    <div class="payment-dropdown" style="display: none;">
+        <div class="payment-card-inner">
+            <h5 style="color: #00e5ff; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px;">PAYMENT DETAILS</h5>
+            <p style="font-size: 0.75rem; color: #8892b0; margin-bottom: 15px;">
+                Copy the account number, make payment, then send confirmation to WhatsApp.
+            </p>
+            
+            <div class="bank-box" style="background: #0a192f; padding: 15px; border-radius: 12px; border: 1px solid #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <small style="color:#8892b0; font-weight: bold;">OPAY</small><br>
+                    <strong style="font-size: 1.4rem; color: white; letter-spacing: 1px;">8165697538</strong>
+                    <br><small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                </div>
+                <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
+            </div>
+
+            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+        </div>
+    </div>
+</div>
+            </section>
+
+             <section class="reveal" style="margin-bottom: 60px;">
+                <div class="section-header"><h2> DISCOUNT FLYER (₦5,500)</h2></div>
+                <div class="work-grid grid-3">
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/discount/sale-1.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/discount/sale-2.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/discount/sale-3.jpg"></div>
+                </div>
+                <div class="portfolio-booking-row">
+    <div class="booking-trigger">
+        <span>Want something like this for your brand?</span>
+        <button class="book-here-btn" onclick="togglePay(this)">..book here ▾</button>
+    </div>
+
+    <div class="payment-dropdown" style="display: none;">
+        <div class="payment-card-inner">
+            <h5 style="color: #00e5ff; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px;">PAYMENT DETAILS</h5>
+            <p style="font-size: 0.75rem; color: #8892b0; margin-bottom: 15px;">
+                Copy the account number, make payment, then send confirmation to WhatsApp.
+            </p>
+            
+            <div class="bank-box" style="background: #0a192f; padding: 15px; border-radius: 12px; border: 1px solid #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <small style="color:#8892b0; font-weight: bold;">OPAY</small><br>
+                    <strong style="font-size: 1.4rem; color: white; letter-spacing: 1px;">8165697538</strong>
+                    <br><small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                </div>
+                <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
+            </div>
+
+            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+        </div>
+    </div>
+</div>
+            </section>
+
+            <section class="reveal" style="margin-bottom: 60px;">
+                <div class="section-header"><h2>BOOK COVERS (₦4,000)</h2></div>
+                <div class="work-grid grid-3">
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/books/book-1.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/books/book-2.jpg"></div>
+                    <div class="img-box" onclick="view(this)"><img src="assets/images/books/book-3.jpg"></div>
+                </div>
+            </section>
+        </div>
+        <div class="portfolio-booking-row">
+    <div class="booking-trigger">
+        <span>Want something like this for your brand?</span>
+        <button class="book-here-btn" onclick="togglePay(this)">..book here ▾</button>
+    </div>
+
+    <div class="payment-dropdown" style="display: none;">
+        <div class="payment-card-inner">
+            <h5 style="color: #00e5ff; margin-bottom: 5px; font-size: 0.8rem; letter-spacing: 1px;">PAYMENT DETAILS</h5>
+            <p style="font-size: 0.75rem; color: #8892b0; margin-bottom: 15px;">
+                Copy the account number, make payment, then send confirmation to WhatsApp.
+            </p>
+            
+            <div class="bank-box" style="background: #0a192f; padding: 15px; border-radius: 12px; border: 1px solid #1e293b; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <small style="color:#8892b0; font-weight: bold;">OPAY</small><br>
+                    <strong style="font-size: 1.4rem; color: white; letter-spacing: 1px;">8165697538</strong>
+                    <br><small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
+                </div>
+                <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
+            </div>
+
+            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <footer class="main-footer">
+    <div class="container footer-content">
+        <h2 class="footer-logo">TOOLIB<span>BURHAAN</span></h2>
+        <p class="footer-tagline">toolibburhaan on all socials</p>
+        
+        <div class="footer-numbers">
+            <p>08165697538 • 09079226370 • 07057852822</p>
+        </div>
+
+        <hr class="footer-divider">
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 TOOLIBBURHAAN. All Rights Reserved.</p>
+            <p class="dev-credit">developed by <span>el_azeezy</span></p>
+        </div>
+    </div>
+</footer>
+
+    <div id="lightbox" onclick="this.style.display='none'"><img id="lb-img"></div>
+
+    <script>
+        // Hamburger Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        function toggleMenu() { navLinks.classList.remove('active'); }
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+        // Ad Dropdown
+        function togglePay(btn) {
+            const drop = btn.closest('.ad-row').querySelector('.payment-dropdown');
+            const isOpen = drop.style.display === 'block';
+            document.querySelectorAll('.payment-dropdown').forEach(d => d.style.display = 'none');
+            document.querySelectorAll('.book-btn').forEach(b => b.innerText = 'BOOK NOW ▾');
+            if(!isOpen) {
+                drop.style.display = 'block';
+                btn.innerText = 'CLOSE ▴';
+            }
+        }
+
+        // Image Viewer
+        function view(box) {
+            document.getElementById('lb-img').src = box.querySelector('img').src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function copyNum(num) {
+    navigator.clipboard.writeText(num);
+    alert("Account Number Copied: " + num);
+}
+
+function togglePay(btn) {
+    const row = btn.closest('.ad-row');
+    const dropdown = row.querySelector('.payment-dropdown');
+    const allDrops = document.querySelectorAll('.payment-dropdown');
+    const allBtns = document.querySelectorAll('.book-btn');
+
+    if (dropdown.style.display === 'block') {
+        dropdown.style.display = 'none';
+        btn.innerText = 'BOOK NOW ▾';
+        btn.classList.remove('active');
+    } else {
+        allDrops.forEach(d => d.style.display = 'none');
+        allBtns.forEach(b => { b.innerText = 'BOOK NOW ▾'; b.classList.remove('active'); });
+        dropdown.style.display = 'block';
+        btn.innerText = 'CLOSE ▴';
+        btn.classList.add('active');
+    }
+}
+
+function togglePay(btn) {
+    // 1. Find the parent container (works for both Ad Portal and Portfolio)
+    const parent = btn.closest('.ad-row') || btn.closest('.portfolio-booking-row');
+    const dropdown = parent.querySelector('.payment-dropdown');
+    
+    // 2. Check current state
+    const isOpen = dropdown.style.display === 'block';
+    
+    // 3. Close ALL other dropdowns first for a clean look
+    document.querySelectorAll('.payment-dropdown').forEach(d => d.style.display = 'none');
+    
+    // 4. Reset all buttons to their original state
+    document.querySelectorAll('.book-btn, .book-here-btn').forEach(b => {
+        if (b.classList.contains('book-btn')) {
+            b.innerText = 'BOOK NOW ▾';
+        } else {
+            b.innerText = '..book here ▾';
+        }
+    });
+
+    // 5. Open the clicked one and change its text
+    if (!isOpen) {
+        dropdown.style.display = 'block';
+        btn.innerText = 'CLOSE ▴';
+    }
+}
+
+// Ensure the copy function is also active
+function copyNum(num) {
+    navigator.clipboard.writeText(num);
+    alert("Account Number Copied: " + num);
+}
+    </script>
+</body>
+</html>
