@@ -24,7 +24,7 @@
             padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
             border-bottom: 1px solid rgba(0, 229, 255, 0.1);
         }
-        .logo { font-family: 'Montserrat'; font-weight: 900; font-size: 1.4rem; letter-spacing: 1px; cursor: pointer; }
+        .logo { font-family: 'Montserrat'; font-weight: 700; font-size: 1.0rem; letter-spacing: 1px; cursor: pointer; }
         .logo span { color: var(--sky); }
 
         /* Hamburger Menu */
@@ -37,15 +37,15 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 100vh; display: flex; align-items: center; justify-content: center;
+            height: 80vh; display: flex; align-items: center; justify-content: center;
             text-align: center; position: relative;
             background: linear-gradient(rgba(10, 25, 47, 0.6), rgba(10, 25, 47, 0.8)), 
-                        url('assets/images/hero-bg.jpg'); /* Faint Background Image */
+                        url('assets/images/your-profile-pic.png'); /* Faint Background Image */
             background-size: cover; background-position: center;
         }
-        .hero-content h3 { color: var(--sky); font-family: 'Montserrat'; font-weight: 700; letter-spacing: 5px; margin-bottom: 15px; font-size: 0.9rem; }
-        .hero-content h1 { font-family: 'Montserrat'; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
-        .hero-tagline { color: var(--sky); font-weight: 800; letter-spacing: 4px; font-size: 1.1rem; margin-bottom: 30px; }
+        .hero-content h3 { color: var(--sky); font-family: 'Montserrat'; font-weight: 600; letter-spacing: 5px; margin-bottom: 15px; font-size: 0.8rem; }
+        .hero-content h1 { font-family: 'Montserrat'; font-size: clamp(1.5rem, 6vw, 3 .5rem); font-weight: 700; line-height: 1.1; margin-bottom: 10px; }
+        .hero-tagline { color: var(--sky); font-weight: 600; letter-spacing: 4px; font-size: 0.9rem; margin-bottom: 30px; }
         .cta-btn { 
             background: var(--sky); color: var(--navy); padding: 18px 45px; 
             border-radius: 50px; font-weight: 900; text-decoration: none; transition: var(--transition);
@@ -64,7 +64,7 @@
     color: #8892b0;      /* Keeps subtext slightly dim for premium look */
 }
         /* --- AD PORTAL (Dermacol Style) --- */
-        .portal-box { background: #0d1117; border-radius: 40px; padding: 10px 30px; border: 1px solid #1e293b; }
+        .portal-box { background: #0d1117; border-radius: 60px; padding: 13px 40px; border: 1px solid #1e293b; }
         .ad-row { padding: 25px 0; border-bottom: 1px solid #1e293b; transition: 0.3s; }
         .ad-row:last-child { border-bottom: none; }
         .ad-flex { display: flex; justify-content: space-between; align-items: center; }
@@ -72,7 +72,7 @@
         .book-btn { background: #1e293b; color: white; border: none; padding: 12px 25px; border-radius: 15px; font-weight: 700; cursor: pointer; }
         .book-btn.active { background: var(--sky); color: var(--navy); }
 
-        .payment-dropdown { display: none; background: #05080f; border-radius: 30px; margin-top: 20px; padding: 30px; border: 1px solid #2d3748; animation: slideIn 0.4s ease; }
+        .payment-dropdown { display: none; background: #05080f; border-radius: 20px; margin-top: 20px; padding: 30px; border: 1px solid #2d3748; animation: slideIn 0.4s ease; }
         .bank-card { background: #000; padding: 20px; border-radius: 20px; border: 1px solid var(--sky); text-align: center; margin: 15px 0; }
         .wa-confirm { background: #25D366; color: white; display: block; text-align: center; padding: 18px; border-radius: 18px; text-decoration: none; font-weight: 900; }
 
@@ -111,34 +111,86 @@
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .portal-box { background: #0d1117; border-radius: 40px; padding: 10px 30px; border: 1px solid #1e293b; }
+        /* --- UPDATED AD PORTAL & DROPDOWN --- */
+.portal-box { 
+    background: #001f3f; /* Deep Navy to match your new Hero */
+    border-radius: 20px; 
+    padding: 15px; /* Reduced for better mobile side-spacing */
+    border: 1px solid #1e293b; 
+    width: 100%; /* Ensures it fills the screen */
+}
+
 .ad-row { 
-    padding: 30px 0; 
+    padding: 20px 0; 
     border-bottom: 1px solid #1e293b; 
 }
-.ad-flex { display: flex; justify-content: space-between; align-items: center; }
+
+.ad-flex { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 10px; /* Prevents text and price from touching */
+}
 
 .ad-info p { 
-    font-size: 1.1rem; 
+    font-size: 0.95rem; /* Slightly smaller for mobile elegance */
     color: #ffffff !important; 
-    margin-bottom: 8px; 
+    margin-bottom: 4px; 
+    line-height: 1.2;
 }
 
-.price { color: var(--sky); font-family: 'Montserrat'; font-weight: 900; font-size: 1.3rem; font-style: italic; }
+.price { 
+    color: #00d4ff; /* Sky Blue accent */
+    font-family: 'Montserrat'; 
+    font-weight: 800; 
+    font-size: 1.1rem; 
+    white-space: nowrap; /* Keeps ₦ and number on one line */
+}
 
-.payment-card-inner { background: #05080f; border-radius: 25px; padding: 25px; border: 1px solid #2d3748; margin-top: 15px; }
+/* --- THE DROPDOWN (PAYMENT CARD) FIX --- */
+.payment-card-inner { 
+    background: #05080f; 
+    border-radius: 20px; 
+    padding: 15px; 
+    border: 1px solid #2d3748; 
+    margin-top: 10px; 
+    width: 100%;
+}
+
 .bank-box { 
-    background: #000; border-radius: 15px; padding: 15px 20px; margin: 20px 0; 
-    border: 1px solid #1e293b; position: relative; display: flex; align-items: center; 
+    background: #000; 
+    border-radius: 12px; 
+    padding: 12px; 
+    margin: 10px 0; 
+    border: 1px solid #1e293b; 
+    display: flex; 
+    justify-content: space-between; /* Spaced out account info and copy icon */
+    align-items: center; 
 }
-.copy-icon { 
-    cursor: pointer; font-size: 1.2rem; transition: 0.2s; padding: 5px; background: #1e293b; border-radius: 8px; 
-}
-.copy-icon:hover { background: var(--sky); color: var(--navy); }
+
 .wa-confirm { 
-    background: #5908ef; color: white; display: block; text-align: center; 
-    padding: 15px; border-radius: 15px; text-decoration: none; font-weight: 900; 
-    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
+    background: #25D366; /* WhatsApp Green for better recognition */
+    color: white; 
+    display: block; 
+    text-align: center; 
+    padding: 12px; 
+    border-radius: 12px; 
+    text-decoration: none; 
+    font-weight: 900; 
+    font-size: 0.75rem; 
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 850px) {
+    .grid-5, .grid-4, .grid-6, .grid-3 { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px; /* Tightens up the space between flyers */
+        padding: 0 10px;
+    }
+    
+    .nav-links { 
+        background: #001f3f; /* Matches Navy theme */
+    }
 }
 
 /* Creates the big gap between Ads and Portfolio */
