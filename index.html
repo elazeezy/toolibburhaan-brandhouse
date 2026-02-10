@@ -293,6 +293,73 @@
     }
 }
 
+/* MOBILE OPTIMIZATIONS (Max-width: 768px) */
+@media screen and (max-width: 768px) {
+    
+    /* 1. HERO TEXT FIX */
+    /* Shrinks the main 'Building Brands' text so it doesn't overwhelm the screen */
+    .hero-content h1 {
+        font-size: 2.2rem !important; /* Reduced from original large size */
+        line-height: 1.2;
+        padding: 0 10px;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem !important;
+        max-width: 90%;
+        margin: 0 auto 20px;
+    }
+
+    /* 2. AD PORTAL FIX (Wider & Neater) */
+    /* Makes the ad rows take up more horizontal space and look 'neat' */
+    .ad-portal-container {
+        padding: 10px !important; /* Reduces outer padding to give inner content more room */
+    }
+
+    .ad-row {
+        width: 100% !important; /* Force it to be wide */
+        padding: 15px !important;
+        margin-bottom: 12px;
+        display: flex;
+        flex-direction: column; /* Stack price and button if space is tight */
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    /* Adjusting the Ad Name and Price text */
+    .ad-info h4 {
+        font-size: 0.95rem !important;
+    }
+
+    .ad-info .price {
+        font-size: 1.1rem !important;
+    }
+
+    /* 3. PORTFOLIO FIX */
+    /* Adjusts the 'LOGO AND FLYER WALL' title size */
+    .portfolio-wall-header h2 {
+        font-size: 1.4rem !important;
+    }
+
+    #portfolio h3 {
+        font-size: 1rem !important;
+        margin-top: 20px;
+    }
+
+    /* Makes the design grid 2-columns on mobile so images aren't too tiny or too big */
+    .work-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px;
+    }
+
+    /* 4. FOOTER ADJUSTMENTS */
+    /* Ensures the numbers stay on one or two lines neatly */
+    .footer-numbers {
+        font-size: 0.75rem !important;
+        padding: 0 15px;
+    }
+}
+
 
     </style>
 </head>
@@ -353,7 +420,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%2024Hours%20Link%20Only.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -380,7 +447,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%2024Hours%20Link%20and%20Picture.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -407,7 +474,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%2024Hours%20Link%20and%20Video.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -434,7 +501,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%203Days%20Link%20and%20Picture.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -461,7 +528,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%203Days%20Link%20and%20Video.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -491,7 +558,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%201%20Week%20Influencing%20Deal.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -518,7 +585,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%202%20Weeks%20Influencing%20Deal.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -545,7 +612,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20a%20Video%20Talk%20for%20my%20Brand.%20Here%20is%20my%20payment%20receipt%20below." class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -572,7 +639,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Brand%20Promotion%20on%20your%20Active%20Group.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -601,7 +668,7 @@
                             <small style="color: #8892b0;">BURHAAN RIDWAN KOLAWOLE</small>
                         </div>
                     </div>
-                    <a href="https://wa.me/2348165697538?text=I%20want%20to%20book%2024H%20Link%20Only" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
+                    <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20a%20Store%20Walk-in%20Video.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM PAYMENT ON WHATSAPP</a>
                 </div>
             </div>
         </div>
@@ -654,7 +721,7 @@
                 <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
             </div>
 
-            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+            <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Flyer%20Design.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM ON WHATSAPP</a>
         </div>
     </div>
 </div>
@@ -692,7 +759,7 @@
                 <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
             </div>
 
-            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+            <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Professional%20Logo%20Design.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM ON WHATSAPP</a>
         </div>
     </div>
 </div>
@@ -728,7 +795,7 @@
                 <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
             </div>
 
-            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+            <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Simple%20Logo%20Design.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM ON WHATSAPP</a>
         </div>
     </div>
 </div>
@@ -764,7 +831,7 @@
                 <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
             </div>
 
-            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+            <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Nikkah%20Invites.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM ON WHATSAPP</a>
         </div>
     </div>
 </div>
@@ -801,7 +868,7 @@
                 <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
             </div>
 
-            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+            <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Certificate%20Design.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM ON WHATSAPP</a>
         </div>
     </div>
 </div>
@@ -836,7 +903,7 @@
                 <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
             </div>
 
-            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+            <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Discount%20Flyer%20Design.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM ON WHATSAPP</a>
         </div>
     </div>
 </div>
@@ -873,7 +940,7 @@
                 <span class="copy-icon" onclick="copyNum('8165697538')" style="cursor: pointer; font-size: 1.2rem;">📋</span>
             </div>
 
-            <a href="https://wa.me/2348165697538" class="wa-confirm">CONFIRM ON WHATSAPP</a>
+            <a href="https://wa.me/2348165697538?text=Hi%20Toolibburhaan,%20I%20just%20booked%20Book%20Cover%20Design.%20Here%20is%20my%20payment%20receipt%20below" class="wa-confirm">CONFIRM ON WHATSAPP</a>
         </div>
     </div>
 </div>
@@ -891,7 +958,7 @@
         <hr class="footer-divider">
 
         <div class="footer-bottom">
-            <p>&copy; 2024 TOOLIBBURHAAN. All Rights Reserved.</p>
+            <p>&copy; 2026 TOOLIBBURHAAN. All Rights Reserved.</p>
             <p class="dev-credit">developed by <span>el_azeezy</span></p>
         </div>
     </div>
